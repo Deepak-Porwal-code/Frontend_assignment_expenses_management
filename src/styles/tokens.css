@@ -1,0 +1,179 @@
+/* =============================================================================
+   Moneta — design tokens
+   One source of truth for colour, type, spacing, elevation and motion.
+   Dark mode flips the same token names, so components never branch on theme.
+   ========================================================================== */
+
+:root {
+  color-scheme: light;
+
+  /* Typography ------------------------------------------------------------ */
+  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI Variable",
+    "Segoe UI", Inter, Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-display: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI Variable Display",
+    "Segoe UI", Inter, Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", "Cascadia Code", "Roboto Mono", Menlo, Consolas, monospace;
+
+  --text-2xs: 0.6875rem;   /* 11px */
+  --text-xs: 0.75rem;      /* 12px */
+  --text-sm: 0.8125rem;    /* 13px */
+  --text-base: 0.875rem;   /* 14px */
+  --text-md: 0.9375rem;    /* 15px */
+  --text-lg: 1.0625rem;    /* 17px */
+  --text-xl: 1.25rem;      /* 20px */
+  --text-2xl: 1.5rem;      /* 24px */
+  --text-3xl: 1.875rem;    /* 30px */
+  --text-4xl: 2.375rem;    /* 38px */
+  --text-5xl: 3.25rem;     /* 52px */
+
+  /* Surfaces -------------------------------------------------------------- */
+  --bg: #f5f4f1;
+  --bg-elevated: #fbfaf8;
+  --surface: #ffffff;
+  --surface-2: #f7f6f3;
+  --surface-3: #efede8;
+  --surface-inverse: #17161e;
+  --surface-inverse-2: #211f2b;
+
+  /* Text ------------------------------------------------------------------ */
+  --text: #1c1b18;
+  --text-secondary: #5e5a53;
+  --text-tertiary: #918c83;
+  --text-on-dark: #f8f7f4;
+  --text-on-dark-muted: rgba(248, 247, 244, 0.64);
+  --text-on-dark-faint: rgba(248, 247, 244, 0.4);
+
+  /* Lines ----------------------------------------------------------------- */
+  --border: #e7e3dc;
+  --border-soft: #efebe5;
+  --border-strong: #d8d3ca;
+  --border-on-dark: rgba(255, 255, 255, 0.12);
+
+  /* Brand ----------------------------------------------------------------- */
+  --primary: #5b56d6;
+  --primary-hover: #4b46c4;
+  --primary-active: #413cb0;
+  --primary-contrast: #ffffff;
+  --primary-soft: #eeedfc;
+  --primary-soft-strong: #dedcfa;
+  --primary-border: #d6d3f8;
+  --brand-from: #8b7dff;
+  --brand-mid: #6c5ce7;
+  --brand-to: #4338ca;
+
+  /* Semantic -------------------------------------------------------------- */
+  --income: #157f4a;
+  --income-strong: #0f6a3c;
+  --income-soft: #e7f7ee;
+  --expense: #d22d4f;
+  --expense-strong: #b31f3e;
+  --expense-soft: #fdecef;
+  --warning: #b45309;
+  --warning-soft: #fdf1df;
+  --info: #0369a1;
+  --info-soft: #e7f5fd;
+  --neutral: #6b675f;
+  --neutral-soft: #f0eee9;
+
+  /* Effects --------------------------------------------------------------- */
+  --focus-ring: 0 0 0 4px rgba(91, 86, 214, 0.18);
+  --focus-ring-danger: 0 0 0 4px rgba(210, 45, 79, 0.16);
+  --scrim: rgba(15, 14, 22, 0.46);
+  --glass: rgba(252, 251, 249, 0.78);
+  --glass-strong: rgba(252, 251, 249, 0.92);
+  --glass-border: rgba(255, 255, 255, 0.55);
+  --hero-gradient: linear-gradient(128deg, #4338ca 0%, #2f2a78 44%, #1c1946 100%);
+  --hero-glow: rgba(139, 125, 255, 0.5);
+  --hero-glow-warm: rgba(246, 173, 85, 0.22);
+
+  --shadow-xs: 0 1px 2px rgba(28, 27, 24, 0.045);
+  --shadow-sm: 0 1px 3px rgba(28, 27, 24, 0.05), 0 4px 12px -6px rgba(28, 27, 24, 0.08);
+  --shadow-md: 0 2px 6px -2px rgba(28, 27, 24, 0.06), 0 14px 34px -14px rgba(28, 27, 24, 0.16);
+  --shadow-lg: 0 4px 10px -4px rgba(28, 27, 24, 0.08), 0 32px 64px -24px rgba(28, 27, 24, 0.22);
+  --shadow-primary: 0 10px 24px -10px rgba(91, 86, 214, 0.55);
+
+  /* Shape ----------------------------------------------------------------- */
+  --radius-xs: 7px;
+  --radius-sm: 10px;
+  --radius-md: 13px;
+  --radius-lg: 17px;
+  --radius-xl: 22px;
+  --radius-2xl: 27px;
+  --radius-3xl: 32px;
+  --radius-pill: 999px;
+
+  /* Layout ---------------------------------------------------------------- */
+  --sidebar-width: 268px;
+  --topbar-height: 60px;
+  --tabbar-height: 68px;
+  --page-max: 1260px;
+  --page-gutter: clamp(1.125rem, 3vw, 2.5rem);
+
+  /* Motion ---------------------------------------------------------------- */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-spring: cubic-bezier(0.34, 1.4, 0.64, 1);
+  --duration-fast: 140ms;
+  --duration-base: 220ms;
+  --duration-slow: 380ms;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  --bg: #09090d;
+  --bg-elevated: #0e0e14;
+  --surface: #14141b;
+  --surface-2: #1a1a23;
+  --surface-3: #22222d;
+  --surface-inverse: #f5f4f2;
+  --surface-inverse-2: #eae9e5;
+
+  --text: #f4f3f1;
+  --text-secondary: #b3b1bd;
+  --text-tertiary: #85838f;
+  --text-on-dark: #f8f7f4;
+  --text-on-dark-muted: rgba(248, 247, 244, 0.66);
+  --text-on-dark-faint: rgba(248, 247, 244, 0.42);
+
+  --border: #26262f;
+  --border-soft: #1f1f28;
+  --border-strong: #353541;
+
+  --primary: #8b7dff;
+  --primary-hover: #a094ff;
+  --primary-active: #b5abff;
+  --primary-contrast: #16121f;
+  --primary-soft: rgba(139, 125, 255, 0.14);
+  --primary-soft-strong: rgba(139, 125, 255, 0.24);
+  --primary-border: rgba(139, 125, 255, 0.32);
+
+  --income: #56d68f;
+  --income-strong: #7ce4ac;
+  --income-soft: rgba(86, 214, 143, 0.12);
+  --expense: #ff7a90;
+  --expense-strong: #ff96a8;
+  --expense-soft: rgba(255, 122, 144, 0.12);
+  --warning: #f4b243;
+  --warning-soft: rgba(244, 178, 67, 0.12);
+  --info: #58bff5;
+  --info-soft: rgba(88, 191, 245, 0.12);
+  --neutral: #a9a6b2;
+  --neutral-soft: rgba(255, 255, 255, 0.06);
+
+  --focus-ring: 0 0 0 4px rgba(139, 125, 255, 0.24);
+  --focus-ring-danger: 0 0 0 4px rgba(255, 122, 144, 0.22);
+  --scrim: rgba(2, 2, 5, 0.68);
+  --glass: rgba(13, 13, 19, 0.76);
+  --glass-strong: rgba(17, 17, 24, 0.92);
+  --glass-border: rgba(255, 255, 255, 0.07);
+  --hero-gradient: linear-gradient(128deg, #3a31a8 0%, #241f5c 46%, #121022 100%);
+  --hero-glow: rgba(139, 125, 255, 0.42);
+  --hero-glow-warm: rgba(246, 173, 85, 0.16);
+
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.35);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.4), 0 4px 14px -6px rgba(0, 0, 0, 0.5);
+  --shadow-md: 0 2px 8px -2px rgba(0, 0, 0, 0.5), 0 18px 40px -16px rgba(0, 0, 0, 0.6);
+  --shadow-lg: 0 6px 16px -6px rgba(0, 0, 0, 0.55), 0 40px 80px -30px rgba(0, 0, 0, 0.7);
+  --shadow-primary: 0 12px 28px -12px rgba(109, 94, 245, 0.6);
+}
