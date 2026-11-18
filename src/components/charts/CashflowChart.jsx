@@ -8,10 +8,12 @@ import {
   YAxis,
 } from 'recharts';
 import { ChartLegend, ChartTooltip, useChartColors } from './ChartPrimitives';
+import { useReducedMotion } from '../../hooks/useMediaQuery';
 import { formatCurrency } from '../../lib/format';
 
 export function CashflowChart({ data, currency = 'USD', height = 268 }) {
   const colors = useChartColors();
+  const reduced = useReducedMotion();
 
   return (
     <div className="chart-block">
@@ -22,7 +24,12 @@ export function CashflowChart({ data, currency = 'USD', height = 268 }) {
         ]}
         className="chart-block__legend"
       />
-      <div className="chart-canvas" style={{ height }}>
+      <div
+        className="chart-canvas"
+        style={{ height }}
+        role="img"
+        aria-label={`Income and expenses by month, bar chart of the last ${data.length} months.`}
+      >
         <ResponsiveContainer width="100%" height="100%">
           <BarChart data={data} margin={{ top: 8, right: 4, bottom: 0, left: 0 }} barGap={5}>
             <CartesianGrid vertical={false} stroke={colors.grid} strokeDasharray="3 7" />
@@ -52,6 +59,7 @@ export function CashflowChart({ data, currency = 'USD', height = 268 }) {
               fill="#22C55E"
               radius={[5, 5, 5, 5]}
               maxBarSize={18}
+              isAnimationActive={!reduced}
             />
             <Bar
               dataKey="expense"
@@ -59,6 +67,7 @@ export function CashflowChart({ data, currency = 'USD', height = 268 }) {
               fill="#F43F5E"
               radius={[5, 5, 5, 5]}
               maxBarSize={18}
+              isAnimationActive={!reduced}
             />
           </BarChart>
         </ResponsiveContainer>

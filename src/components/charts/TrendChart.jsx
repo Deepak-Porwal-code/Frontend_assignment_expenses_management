@@ -9,10 +9,12 @@ import {
   YAxis,
 } from 'recharts';
 import { ChartLegend, ChartTooltip, useChartColors } from './ChartPrimitives';
+import { useReducedMotion } from '../../hooks/useMediaQuery';
 import { formatCurrency } from '../../lib/format';
 
 export function TrendChart({ data, currency = 'USD', height = 300 }) {
   const colors = useChartColors();
+  const reduced = useReducedMotion();
   const gradientId = useId().replace(/:/g, '');
 
   return (
@@ -24,7 +26,12 @@ export function TrendChart({ data, currency = 'USD', height = 300 }) {
         ]}
         className="chart-block__legend"
       />
-      <div className="chart-canvas" style={{ height }}>
+      <div
+        className="chart-canvas"
+        style={{ height }}
+        role="img"
+        aria-label={`Income and expenses trend over ${data.length} points, area chart.`}
+      >
         <ResponsiveContainer width="100%" height="100%">
           <AreaChart data={data} margin={{ top: 8, right: 4, bottom: 0, left: 0 }}>
             <defs>
@@ -67,6 +74,7 @@ export function TrendChart({ data, currency = 'USD', height = 300 }) {
               fill={`url(#${gradientId}-income)`}
               activeDot={{ r: 4, strokeWidth: 2, stroke: colors.dotStroke }}
               dot={false}
+              isAnimationActive={!reduced}
             />
             <Area
               type="monotone"
@@ -77,6 +85,7 @@ export function TrendChart({ data, currency = 'USD', height = 300 }) {
               fill={`url(#${gradientId}-expense)`}
               activeDot={{ r: 4, strokeWidth: 2, stroke: colors.dotStroke }}
               dot={false}
+              isAnimationActive={!reduced}
             />
           </AreaChart>
         </ResponsiveContainer>

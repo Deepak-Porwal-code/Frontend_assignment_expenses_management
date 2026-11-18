@@ -4,11 +4,14 @@ import { CategoryIcon } from '../ui/Icon';
 import { ChartTooltip } from './ChartPrimitives';
 import { formatCurrency, formatPercent } from '../../lib/format';
 import { CHART_COLORS } from '../../lib/constants';
+import { useReducedMotion } from '../../hooks/useMediaQuery';
 
 export function CategoryDonut({ data, total, currency = 'USD', size = 216, getHref }) {
+  const reduced = useReducedMotion();
+
   return (
     <div className="donut">
-      <div className="donut__chart" style={{ width: size, height: size }}>
+      <div className="donut__chart" style={{ width: size, height: size }} aria-hidden="true">
         <ResponsiveContainer width="100%" height="100%">
           <PieChart>
             <Pie
@@ -20,6 +23,7 @@ export function CategoryDonut({ data, total, currency = 'USD', size = 216, getHr
               paddingAngle={2}
               cornerRadius={7}
               stroke="none"
+              isAnimationActive={!reduced}
             >
               {data.map((entry, index) => (
                 <Cell
